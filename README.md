@@ -4,7 +4,7 @@
 
 Create an app that animates a Snowman through various transformations.  Allow the user to save animation settings and chose which setting they want to animate it with.  Implement a pause button that enables the user to pause and resume animationes.
 
-# Gif
+# Gifs
 
 ![gif1](https://github.com/C4Q/AC-iOS-Unit4FinalAssessment/blob/master/snowmangifone.gif)
 
