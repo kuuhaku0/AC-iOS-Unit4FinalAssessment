@@ -58,6 +58,27 @@ Horizontal position and vertical position can be either relative to the center, 
 
 No endpoints needed!
 
+# A note on pausing Core Animation
+
+You have seen pausing animations with `UIViewPropertyAnimator `.  For Core Animation, the [following technique](https://developer.apple.com/library/content/qa/qa1673/_index.html) can be used:
+
+```swift
+func pause(layer: CALayer) {
+   let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+   layer.speed = 0
+   layer.timeOffset = pausedTime
+}
+
+func resume(layer: CALayer) {
+    let pausedTime = layer.timeOffset
+    layer.speed = 1
+    layer.timeOffset = 0
+    layer.beginTime = 0
+    let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+    layer.beginTime = timeSincePause
+}
+```
+
 
 # Rubric
 
@@ -76,6 +97,3 @@ Extra Credit: Add 2 additional animations dimensions  | 2 points
 
 
 A total of 40 points, with 2 points extra credit.
-
-
-https://developer.apple.com/library/content/qa/qa1673/_index.html
