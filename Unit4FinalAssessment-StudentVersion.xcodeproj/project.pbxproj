@@ -12,6 +12,9 @@
 		54AE102E2007F203005FFA29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54AE102C2007F203005FFA29 /* LaunchScreen.storyboard */; };
 		54AE10362007F256005FFA29 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE10352007F256005FFA29 /* AnimationViewController.swift */; };
 		54AE10382007F270005FFA29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE10372007F270005FFA29 /* SettingsViewController.swift */; };
+		817940CC20090F0E00DD1BC7 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817940CB20090F0E00DD1BC7 /* AnimationView.swift */; };
+		817940CE20091AEB00DD1BC7 /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817940CD20091AEB00DD1BC7 /* AnimationTableViewCell.swift */; };
+		817940D020091E9600DD1BC7 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817940CF20091E9600DD1BC7 /* FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		54AE102F2007F203005FFA29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54AE10352007F256005FFA29 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		54AE10372007F270005FFA29 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		817940CB20090F0E00DD1BC7 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		817940CD20091AEB00DD1BC7 /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
+		817940CF20091E9600DD1BC7 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +60,12 @@
 		54AE10222007F203005FFA29 /* Unit4FinalAssessment-StudentVersion */ = {
 			isa = PBXGroup;
 			children = (
+				817940CF20091E9600DD1BC7 /* FileManager.swift */,
 				54AE10232007F203005FFA29 /* AppDelegate.swift */,
+				817940CB20090F0E00DD1BC7 /* AnimationView.swift */,
 				54AE10352007F256005FFA29 /* AnimationViewController.swift */,
 				54AE10372007F270005FFA29 /* SettingsViewController.swift */,
+				817940CD20091AEB00DD1BC7 /* AnimationTableViewCell.swift */,
 				54AE102A2007F203005FFA29 /* Assets.xcassets */,
 				54AE102C2007F203005FFA29 /* LaunchScreen.storyboard */,
 				54AE102F2007F203005FFA29 /* Info.plist */,
@@ -136,8 +145,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				54AE10242007F203005FFA29 /* AppDelegate.swift in Sources */,
+				817940CC20090F0E00DD1BC7 /* AnimationView.swift in Sources */,
 				54AE10362007F256005FFA29 /* AnimationViewController.swift in Sources */,
+				817940D020091E9600DD1BC7 /* FileManager.swift in Sources */,
 				54AE10382007F270005FFA29 /* SettingsViewController.swift in Sources */,
+				817940CE20091AEB00DD1BC7 /* AnimationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

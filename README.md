@@ -89,7 +89,7 @@ Variable Naming and Readability | 4 Points
 App uses MVC Design Patterns | 4 Points
 Settings Table View controller is correctly populated with properties | 4 Points
 Settings Table View uses a custom table view cell appropriately | 4 Points
-Settings can be saved from the SettingsViewController to FileManager | 4 Points
+Settings can be saved from the SettingsViewController to FileManager and the | 4 Points
 AnimationViewController loads saved settings into a PickerView and updates as you add additional settings | 4 Points
 Pressing the play button causes the view to perform the appropriate animation | 8 Points
 The user can pause and resume the animation | 4 Points
