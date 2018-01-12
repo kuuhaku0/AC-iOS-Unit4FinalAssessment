@@ -6,6 +6,11 @@ Create an app that animates a Snowman through various transformations.  Allow th
 
 # Gif
 
+![gif1](https://github.com/C4Q/AC-iOS-Unit4FinalAssessment/blob/master/snowmangifone.gif)
+
+![gif2](https://github.com/C4Q/AC-iOS-Unit4FinalAssessment/blob/master/snowmangiftwo.gif)
+
+![gif3](https://github.com/C4Q/AC-iOS-Unit4FinalAssessment/blob/master/snowmangifthree.gif)
 
 
 # What's inside
