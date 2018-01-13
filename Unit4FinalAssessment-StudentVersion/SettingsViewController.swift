@@ -118,7 +118,6 @@ class SettingsViewController: UIViewController {
         switch sender.tag {
         case 0:
             settingsToSave.width = sender.value
-//            cell.settingLabel.text = "Width Multiplier: \(sender.value)"
         case 1:
             settingsToSave.height = sender.value
 //            cell.settingLabel.text = "Height Multiplier: \(sender.value)"

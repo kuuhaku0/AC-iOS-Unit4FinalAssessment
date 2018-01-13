@@ -16,17 +16,18 @@ class AnimationViewController: UIViewController {
     
     var isAnimating = false
     
-    var pickerData = [[Animation(animationName: "Default", width: 1, height: 1, horizontal: 0, vertical: 0, flips: 1)]]
+    var pickerData = [[Animation(animationName: "Default", width: 1, height: 1, horizontal: 0, vertical: 0, flips: 0)]]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        for animation in DataStore.manager.getAnimations() {
-            pickerData.append([animation])
-        }
+        animationView.pickerView.reloadAllComponents()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for animation in DataStore.manager.getAnimations() {
+            pickerData.append([animation])
+        }
         animationView.pickerView.delegate = self
         animationView.pickerView.dataSource = self
         selectedAnimation = pickerData.first?.first
@@ -36,11 +37,6 @@ class AnimationViewController: UIViewController {
     }
     
     @objc func pausePlay() {
-        if isAnimating == false {
-            performAnimations(with: selectedAnimation)
-            isAnimating = true
-        }
-        let layer = animationView.imageView.layer
         if animationView.imageView.layer.speed == 1 {
             let pausedTime = animationView.imageView.layer.convertTime(CACurrentMediaTime(), from: nil)
             animationView.imageView.layer.speed = 0
@@ -52,14 +48,23 @@ class AnimationViewController: UIViewController {
             animationView.imageView.layer.speed = 1
             animationView.imageView.layer.timeOffset = 0
             animationView.imageView.layer.beginTime = 0
-            let timeSincePause = imageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+            let timeSincePause = animationView.imageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
             animationView.imageView.layer.beginTime = timeSincePause
         }
+        if isAnimating == false {
+            performAnimations(with: selectedAnimation)
+            isAnimating = true
+        }
+    }
+    func resetAnimation() {
+        animationView.imageView.layer.removeAllAnimations()
+        
     }
 }
 
 extension AnimationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        resetAnimation()
         if row == 0 {
             selectedAnimation = pickerData[row].first
         }
@@ -89,14 +94,40 @@ extension AnimationViewController: UIPickerViewDelegate, UIPickerViewDataSource 
 
 extension AnimationViewController {
     func performAnimations(with values: Animation) {
-        let animation = CABasicAnimation(keyPath: "transform.rotation.x")
+        let layer = animationView.imageView.layer
+        
+        //Rotate X Axis
+        let rotationXAxis = CABasicAnimation(keyPath: "transform.rotation.x")
         let angleRadian = CGFloat(2.0 * .pi) // 360
-        animation.fromValue = 0 // degrees
-        animation.byValue = angleRadian
-        animation.duration = 5.0 // seconds
-        animation.repeatCount = 1
-        animation.delegate = self
-        animationView.imageView.layer.add(animation, forKey: nil)
+        rotationXAxis.fromValue = 0 // degrees
+        rotationXAxis.byValue = angleRadian
+        rotationXAxis.duration = 3 // seconds
+        rotationXAxis.repeatCount = Float(selectedAnimation.flips)
+        rotationXAxis.delegate = self
+        layer.add(rotationXAxis, forKey: nil)
+        
+        //Scale
+        let scale = CABasicAnimation(keyPath: "transform.scale")
+        scale.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        scale.delegate = self
+        let toValue = CATransform3DMakeScale(CGFloat(selectedAnimation.width), CGFloat(selectedAnimation.height), 0)
+        let fromValue = CATransform3DMakeScale(1, 1, 0)
+        scale.fromValue = fromValue
+        scale.toValue = toValue
+        scale.duration = 3
+        scale.repeatCount = Float(selectedAnimation.flips)
+        layer.add(scale, forKey: nil)
+        
+        //Animate Position
+        let position = CABasicAnimation(keyPath: "position")
+        position.delegate = self
+        position.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        position.fromValue = layer.position
+        position.toValue = CGPoint(x: Double(100) / Double(UIScreen.main.bounds.width) * Double(selectedAnimation.horizontal),
+                                   y: 100.0 / Double(UIScreen.main.bounds.height) * Double(selectedAnimation.vertical))
+        position.duration = 3
+        position.repeatCount = Float(selectedAnimation.flips)
+        layer.add(position, forKey: nil)
     }
 }
 
